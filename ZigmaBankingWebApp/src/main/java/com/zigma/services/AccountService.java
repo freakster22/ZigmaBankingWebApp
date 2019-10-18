@@ -8,7 +8,7 @@ public interface AccountService {
 
 	List<Account> findAllAccounts();
 
-	Account findAccountByCrn(int crn);
+	Account findAccountByAccountNo(long accountNo);
 
 	void update(Account account);
 

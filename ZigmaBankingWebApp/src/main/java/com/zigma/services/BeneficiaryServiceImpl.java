@@ -2,6 +2,9 @@ package com.zigma.services;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+
 import com.zigma.daos.BeneficiaryDao;
 import com.zigma.entities.Beneficiary;
 import com.zigma.daos.BeneficiaryDaoImpl;
@@ -9,7 +12,7 @@ import com.zigma.daos.BeneficiaryDaoImpl;
 public class BeneficiaryServiceImpl implements BeneficiaryService
 {
 
-
+@Autowired
 	private BeneficiaryDao  beneficiaryDao;
 	public BeneficiaryServiceImpl() 
 	{

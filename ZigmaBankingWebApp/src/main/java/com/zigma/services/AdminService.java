@@ -1,17 +1,13 @@
 package com.zigma.services;
 
-import java.util.List;
-
+import com.zigma.entities.Account;
 import com.zigma.entities.Admin;
 
 public interface AdminService {
-	List<Admin> findAllAdmins();
 
-	Admin findAdminById(int adminId);
+	Admin findAdminById(long adminId);
 
-	void addAdmin(Admin admin);
+	public boolean isExistBeneficiary(String crn, long beneficiaryId);
 
 	void updateAdmin(Admin admin);
-
-	void removeAdmin(Admin admin);
 }

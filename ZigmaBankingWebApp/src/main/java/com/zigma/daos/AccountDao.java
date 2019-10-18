@@ -7,7 +7,7 @@ import com.zigma.entities.Account;
 public interface AccountDao {
 List<Account> getAll();
 	
-	Account getById(int crn);
+	Account findAccountByAccountNo(long accountNo);
 	
 	void update(Account account);
 	

@@ -17,20 +17,24 @@ import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import org.springframework.stereotype.Component;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Component
 @Entity
 public class Login {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
-	private int id;
+	private long id;
 
 	@Column(nullable = false, columnDefinition = "varchar(20) default 'password123'")
 	private String password;
 
 	@OneToOne(mappedBy = "login")
+	@JsonIgnore
 	private Customer customer;
 
 	@OneToOne(mappedBy = "login")
+	@JsonIgnore
 	private Admin admin;
 
 	public String getPassword() {
@@ -57,11 +61,11 @@ public class Login {
 		this.admin = admin;
 	}
 
-	public int getId() {
+	public long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 

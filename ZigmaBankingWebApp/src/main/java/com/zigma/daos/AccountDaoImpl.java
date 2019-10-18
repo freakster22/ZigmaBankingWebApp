@@ -33,8 +33,8 @@ public class AccountDaoImpl implements AccountDao {
 	}
 
 	@Override
-	public Account getById(int crn) {
-		return hibernateTemplate.get(Account.class, crn);
+	public Account findAccountByAccountNo(long accountNo) {
+		return hibernateTemplate.get(Account.class,accountNo );
 	}
 
 	@Override

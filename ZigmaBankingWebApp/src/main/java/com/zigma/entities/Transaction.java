@@ -11,6 +11,7 @@ package com.zigma.entities;
 
 import java.time.LocalDate;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -18,6 +19,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import org.springframework.stereotype.Component;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Component
 @Entity
@@ -29,12 +32,14 @@ public class Transaction {
 	private int tPin;
 	private String crn;
 	@OneToOne
+	@JsonIgnore
 	@JoinColumn(name = "beneficiaryId")
 	private Beneficiary beneficiary;
 
 	private double amount;
 	private LocalDate dateTime;
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JsonIgnore
 	@JoinColumn(name = "accountId")
 	private Account account;
 

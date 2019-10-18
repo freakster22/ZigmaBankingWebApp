@@ -8,7 +8,7 @@ public interface LoginService {
 
 	List<Login> findAllLogin();
 
-	Login findLoginById(int CRN);
+	Login findLoginById(long crn);
 
 	void addLogin(Login login);
 

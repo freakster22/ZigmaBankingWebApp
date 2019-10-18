@@ -3,12 +3,15 @@ package com.zigma.services;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+//import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.zigma.daos.AccountDao;
 import com.zigma.entities.Account;
 
 @Service
+@Transactional
 public class AccountServiceImpl implements AccountService {
 
 	@Autowired
@@ -26,9 +29,9 @@ public class AccountServiceImpl implements AccountService {
 	}
 
 	@Override
-	public Account findAccountByCrn(int crn) {
+	public Account findAccountByAccountNo(long accountNo) {
 		// TODO Auto-generated method stub
-		return accountDao.getById(crn);
+		return accountDao.findAccountByAccountNo(accountNo);
 	}
 
 	@Override

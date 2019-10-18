@@ -1,17 +1,19 @@
 package com.zigma.daos;
 
 import java.util.List;
-
+import com.zigma.entities.Account;
 import com.zigma.entities.Admin;
 
 public interface AdminDao {
-	List<Admin> getAll();
 
-	Admin getById(int adminId);
+    public List<Account> getAllPendingAuthorization(long crn);
+	public List<Account> getAllCompleteAuthorization(long crn);
 
-	void insert(Admin admin);
+	Admin findAdminById(long adminId);
+
+	
 
 	void update(Admin admin);
 
-	void delete(Admin admin);
+
 }

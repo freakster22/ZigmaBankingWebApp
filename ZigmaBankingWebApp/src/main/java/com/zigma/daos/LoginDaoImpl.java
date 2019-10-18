@@ -28,7 +28,7 @@ public class LoginDaoImpl implements LoginDao {
 	}
 
 	@Override
-	public Login getById(int crn) {
+	public Login getById(long crn) {
 		return hibernateTemplate.get(Login.class, crn);
 	}
 

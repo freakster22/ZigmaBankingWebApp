@@ -21,6 +21,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import org.springframework.stereotype.Component;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Component
 @Entity
 public class Customer {
@@ -31,6 +33,7 @@ public class Customer {
 	private long crn;
 
 	@OneToOne
+	@JsonIgnore
 	@JoinColumn(name = "userId")
 	private Login login;
 	@Column(nullable = false)
@@ -46,6 +49,7 @@ public class Customer {
 
 	private LocalDateTime logoutTime;
 	@OneToMany(mappedBy = "customer")
+	@JsonIgnore
 	private List<Account> account;
 
 	public long getCrn() {

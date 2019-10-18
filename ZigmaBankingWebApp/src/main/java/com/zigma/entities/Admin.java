@@ -16,6 +16,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import org.springframework.stereotype.Component;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Component
 @Entity
@@ -25,6 +26,7 @@ public class Admin {
 	private long adminId;
 
 	@OneToOne
+	@JsonIgnore
 	@JoinColumn(name = "userId")
 	private Login login;
 

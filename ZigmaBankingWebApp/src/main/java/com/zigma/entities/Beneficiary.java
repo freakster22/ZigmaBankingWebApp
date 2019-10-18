@@ -10,6 +10,7 @@ package com.zigma.entities;
  */
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -17,6 +18,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import org.springframework.stereotype.Component;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Component
 @Entity
@@ -28,10 +31,12 @@ public class Beneficiary {
 	private String ifsc;
 	private String bankName;
 	private String nickName;
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JsonIgnore
 	@JoinColumn(name = "accountId")
 	private Account account;
 	@OneToOne(mappedBy = "beneficiary")
+	@JsonIgnore
 	private Transaction transaction;
 
 	public int getBeneficiaryId() {

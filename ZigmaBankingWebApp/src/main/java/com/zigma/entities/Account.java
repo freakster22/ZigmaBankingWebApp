@@ -12,6 +12,7 @@ package com.zigma.entities;
 import java.time.LocalDateTime;
 import java.util.List;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -20,17 +21,20 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import org.springframework.stereotype.Component;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Component
 @Entity
 public class Account {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private String accountNo;
+	private long accountNo;
 	private LocalDateTime date;
 	private double totalBalance;
 	private String accountType;
 
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JsonIgnore
 	@JoinColumn(name = "crn")
 	private Customer customer;
 	@OneToMany(mappedBy = "account")
@@ -38,11 +42,11 @@ public class Account {
 	@OneToMany(mappedBy = "account")
 	private List<Transaction> transaction;
 
-	public String getAccountNo() {
+	public long getAccountNo() {
 		return accountNo;
 	}
 
-	public void setAccountNo(String accountNo) {
+	public void setAccountNo(long accountNo) {
 		this.accountNo = accountNo;
 	}
 

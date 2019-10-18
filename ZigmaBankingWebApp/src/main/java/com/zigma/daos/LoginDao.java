@@ -5,7 +5,7 @@ import java.util.List;
 import com.zigma.entities.Login;
 
 public interface LoginDao {
-	Login getById(int crn);
+	Login getById(long crn);
 
 	void insert(Login login);
 

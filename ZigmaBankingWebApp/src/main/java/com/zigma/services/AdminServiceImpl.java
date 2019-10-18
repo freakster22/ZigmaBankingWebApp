@@ -1,14 +1,11 @@
 package com.zigma.services;
 
-import java.util.List;
-
 import javax.transaction.Transactional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.zigma.daos.AdminDao;
 import com.zigma.daos.AdminDaoImpl;
+import com.zigma.entities.Account;
 import com.zigma.entities.Admin;
 
 @Service
@@ -23,16 +20,22 @@ public class AdminServiceImpl implements AdminService {
 	}
 
 	@Override
-	public Admin findAdminById(int adminId) {
+	public Admin findAdminById(long adminId) {
 		// TODO Auto-generated method stub
-		return adminDao.getById(adminId);
+		return adminDao.findAdminById(adminId);
 	}
 
 	@Override
-	public void addAdmin(Admin admin) {
+	public boolean isExistBeneficiary(String ifsc, long beneficiaryId) {
 		// TODO Auto-generated method stub
-		adminDao.insert(admin);
+		if(ifsc!=null && beneficiaryId!=0) {
+		return false;
 	}
+		else
+			return true;
+	}
+
+
 
 	@Override
 	public void updateAdmin(Admin admin) {
@@ -40,17 +43,6 @@ public class AdminServiceImpl implements AdminService {
 		adminDao.update(admin);
 	}
 
-	@Override
-	public void removeAdmin(Admin admin) {
-		// TODO Auto-generated method stub
-		adminDao.delete(admin);
-	}
-
-	@Override
-	public List<Admin> findAllAdmins() {
-		// TODO Auto-generated method stub
-		return adminDao.getAll();
-	}
-
+	
 
 }

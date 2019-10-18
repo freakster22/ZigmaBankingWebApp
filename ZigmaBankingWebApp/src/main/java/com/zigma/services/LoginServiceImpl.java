@@ -2,12 +2,18 @@ package com.zigma.services;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
 import com.zigma.daos.LoginDao;
 import com.zigma.daos.LoginDaoImpl;
 import com.zigma.entities.Login;
-
+@Service
+@Transactional
 public class LoginServiceImpl implements LoginService {
-
+@Autowired
 	private LoginDao loginDao;
 
 	public LoginServiceImpl() {
@@ -20,7 +26,7 @@ public class LoginServiceImpl implements LoginService {
 	}
 
 	@Override
-	public Login findLoginById(int crn) {
+	public Login findLoginById(long crn) {
 		Login login = loginDao.getById(crn);
 		return login;
 	}

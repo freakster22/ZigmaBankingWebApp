@@ -3,7 +3,6 @@ package com.zigma.services;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -38,6 +37,16 @@ public class AccountServiceImpl implements AccountService {
 	public void delete(Account account) {
 		// TODO Auto-generated method stub
 		accountDao.delete(account);
+	}
+
+	@Override
+	public boolean accountExists(Account account) {
+		// TODO Auto-generated method stub
+		if(account.getAccountNo()!=0) {
+			return true;
+		}
+		else
+			return false;	
 	}
 
 }

@@ -1,5 +1,7 @@
 package com.zigma.daos;
 
+import com.zigma.entities.Account;
+
 /**
  * @author Dipankar Chakraborty
  * @creation_date 5th Oct 2019 6:00PM
@@ -9,8 +11,8 @@ package com.zigma.daos;
  * @description It is a Dao Interface and used in persistence layer.
  */
 
-import com.zigma.entities.Account;
-import com.zigma.exceptions.AccountNotFoundException;
+import com.zigma.entities.Transaction;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate5.HibernateTemplate;
@@ -21,55 +23,25 @@ public class TransactionDaoImpl implements TransactionDao {
 
 	@Autowired
 	private HibernateTemplate hibernateTemplate;
+
 	@Override
-	public void showBalance(Account AccountTable) throws AccountNotFoundException {
+	public Boolean save(Transaction transaction) {
 		// TODO Auto-generated method stub
-		
+		return true;
 	}
 
 	@Override
-	public void transferFunds(Account accountSource, Account accountTarget, int transferAmount)
-			throws AccountNotFoundException {
+	public List<Transaction> getById(long accountNo) {
 		// TODO Auto-generated method stub
-		
-	}}
-
-	
-	/* @Override
-	 * public void showBalance(Account AccountTable) throws AccountNotFoundException
-	 *
-	 * { // TODO Auto-generated method stub
-	 * if(AccountNumberCheckUtil.accountExists(AccountTable)){
-	 * System.out.println("The available balance is "+AccountTable.getTotalBalance()
-	 * ); } else{ throw new AccountNotFoundException(AccountTable.getAccountNo()); }
-	 * 
-	 * }
-	
-
-	@Override
-	public void transferFunds(Account accountSource, Account accountTarget, int transferAmount)
-			throws AccountNotFoundException {
-		// TODO Auto-generated method stub
-		double sourceBalance = accountSource.getTotalBalance();
-		double targetBalance = accountTarget.getTotalBalance();
-		if(AccountNumberCheckUtil.accountExists(accountSource) && AccountNumberCheckUtil.accountExists(accountTarget)){
-			if(transferAmount<sourceBalance){
-				sourceBalance = sourceBalance - transferAmount;
-				targetBalance = targetBalance + transferAmount;
-				accountSource.setTotalBalance(sourceBalance);
-				accountTarget.setTotalBalance(targetBalance);
-			}
-			else
-				throw new InSufficientFundsException(transferAmount);
-		}
-		else{
-			if(AccountNumberCheckUtil.accountExists(accountSource))
-				throw new AccountNotFoundException(accountTarget.getActNumber());
-			else
-				throw new AccountNotFoundException(accountSource.getActNumber());
-		}
-
+		return (List<Transaction>) hibernateTemplate.find("from Transaction");
 	}
 
+	@Override
+	public List<Account> getBalanceByAccountNo(long accountNo) {
+		// TODO Auto-generated method stub
+		return (List<Account>) hibernateTemplate.find("from Account");
+	}
+
+
+	
 }
-*/

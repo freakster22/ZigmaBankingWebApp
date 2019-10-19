@@ -1,9 +1,14 @@
 package com.zigma.daos;
 
+import java.util.List;
+
 import com.zigma.entities.Account;
-import com.zigma.exceptions.AccountNotFoundException;
+import com.zigma.entities.Transaction;
 
 public interface TransactionDao {
-	public void showBalance(Account AccountTable) throws AccountNotFoundException;
-	public void transferFunds(Account accountSource,Account accountTarget,int transferAmount) throws AccountNotFoundException;
+	
+public Boolean save(Transaction transaction);
+public List<Account> getBalanceByAccountNo(long accountNo);
+	
+	public List<Transaction> getById(long accountNo);
 }

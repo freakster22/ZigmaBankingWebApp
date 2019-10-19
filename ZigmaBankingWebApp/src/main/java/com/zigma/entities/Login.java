@@ -14,6 +14,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import org.springframework.stereotype.Component;
 
@@ -26,25 +27,27 @@ public class Login {
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private long id;
 
-	@Column(nullable = false, columnDefinition = "varchar(20) default 'password123'")
-	private String password;
-
-	@OneToOne(mappedBy = "login")
+	@OneToOne
+	@JoinColumn(name="crn")
 	@JsonIgnore
 	private Customer customer;
 
-	@OneToOne(mappedBy = "login")
+	@OneToOne
+	@JoinColumn(name = "adminId")
 	@JsonIgnore
 	private Admin admin;
-
-	public String getPassword() {
-		return password;
+	
+	@Column(nullable = false, updatable = true)
+	private String password;
+	
+	public long getId() {
+		return id;
 	}
 
-	public void setPassword(String password) {
-		this.password = password;
+	public void setId(long id) {
+		this.id = id;
 	}
-
+	
 	public Customer getCustomer() {
 		return customer;
 	}
@@ -60,18 +63,18 @@ public class Login {
 	public void setAdmin(Admin admin) {
 		this.admin = admin;
 	}
-
-	public long getId() {
-		return id;
+	
+	public String getPassword() {
+		return password;
 	}
 
-	public void setId(long id) {
-		this.id = id;
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 	@Override
 	public String toString() {
-		return "Login [id=" + id + ", password=" + password + ", customer=" + customer + ", admin=" + admin + "]";
+		return "Login [id=" + id + ", customer=" + customer + ", admin=" + admin + ", password=" + password + "]";
 	}
 
 }

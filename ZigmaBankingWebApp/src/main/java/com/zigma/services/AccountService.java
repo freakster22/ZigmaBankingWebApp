@@ -13,4 +13,6 @@ public interface AccountService {
 	void update(Account account);
 
 	void delete(Account account);
+
+	boolean accountExists(Account account);
 }

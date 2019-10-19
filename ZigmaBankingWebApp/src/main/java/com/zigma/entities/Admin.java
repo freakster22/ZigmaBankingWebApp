@@ -22,12 +22,10 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Entity
 public class Admin {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long adminId;
 
-	@OneToOne
+	@OneToOne(mappedBy = "admin")
 	@JsonIgnore
-	@JoinColumn(name = "userId")
 	private Login login;
 
 	public long getAdminId() {

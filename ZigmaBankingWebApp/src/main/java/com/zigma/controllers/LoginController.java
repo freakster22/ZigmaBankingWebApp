@@ -23,6 +23,7 @@ public class LoginController {
 	@PostMapping("/log/add")
 	public String add(Login login) {
 		loginService.addLogin(login);
+		System.out.println(login);
 		return "new login is added: " + login.getId();
 
 	}

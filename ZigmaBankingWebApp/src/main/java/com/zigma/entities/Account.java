@@ -31,7 +31,7 @@ public class Account {
 	private long accountNo;
 	private LocalDateTime date;
 	private double totalBalance;
-	private String accountType;
+	private String accountType; //to be modified
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JsonIgnore
@@ -62,8 +62,8 @@ public class Account {
 		return totalBalance;
 	}
 
-	public void setTotalBalance(double totalBalance) {
-		this.totalBalance = totalBalance;
+	public double setTotalBalance(double totalBalance) {
+		return this.totalBalance = totalBalance;
 	}
 
 	public String getAccountType() {

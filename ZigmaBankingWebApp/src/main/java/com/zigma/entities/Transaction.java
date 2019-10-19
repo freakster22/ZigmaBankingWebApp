@@ -28,20 +28,17 @@ public class Transaction {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int transactId;
-
-	private int tPin;
-	private String crn;
-	@OneToOne
-	@JsonIgnore
-	@JoinColumn(name = "beneficiaryId")
-	private Beneficiary beneficiary;
-
-	private double amount;
-	private LocalDate dateTime;
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JsonIgnore
 	@JoinColumn(name = "accountId")
 	private Account account;
+	@OneToOne
+	@JsonIgnore
+	@JoinColumn(name = "beneficiaryId")
+	private Beneficiary beneficiary;
+	private double amount;
+	private int tPin;
+	private LocalDate dateTime;
 
 	public int getTransactId() {
 		return transactId;
@@ -51,20 +48,20 @@ public class Transaction {
 		this.transactId = transactId;
 	}
 
-	public int gettPin() {
-		return tPin;
+	public Account getAccount() {
+		return account;
 	}
 
-	public void settPin(int tPin) {
-		this.tPin = tPin;
+	public void setAccount(Account account) {
+		this.account = account;
 	}
 
-	public String getCrn() {
-		return crn;
+	public Beneficiary getBeneficiary() {
+		return beneficiary;
 	}
 
-	public void setCrn(String crn) {
-		this.crn = crn;
+	public void setBeneficiary(Beneficiary beneficiary) {
+		this.beneficiary = beneficiary;
 	}
 
 	public double getAmount() {
@@ -73,6 +70,14 @@ public class Transaction {
 
 	public void setAmount(double amount) {
 		this.amount = amount;
+	}
+
+	public int gettPin() {
+		return tPin;
+	}
+
+	public void settPin(int tPin) {
+		this.tPin = tPin;
 	}
 
 	public LocalDate getDateTime() {
@@ -85,7 +90,8 @@ public class Transaction {
 
 	@Override
 	public String toString() {
-		return "Transaction [transactId=" + transactId + ", tPin=" + tPin + ", crn=" + crn + ", beneficiary="
-				+ beneficiary + ", amount=" + amount + ", dateTime=" + dateTime + ", account=" + account + "]";
+		return "Transaction [transactId=" + transactId + ", account=" + account + ", beneficiary=" + beneficiary
+				+ ", amount=" + amount + ", tPin=" + tPin + ", dateTime=" + dateTime + "]";
 	}
+
 }

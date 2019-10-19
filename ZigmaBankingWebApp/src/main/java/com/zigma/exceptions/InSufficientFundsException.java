@@ -1,21 +1,9 @@
 package com.zigma.exceptions;
 
-public class InSufficientFundsException extends RuntimeException {
-	private int fundsAmount;
+public class InSufficientFundsException extends Exception {
 
-	public InSufficientFundsException() {
-		super();
+	public InSufficientFundsException(double transferAmount) {
 		// TODO Auto-generated constructor stub
-	}
-
-	public InSufficientFundsException(int fundsAmount) {
-		super();
-		this.fundsAmount = fundsAmount;
-	}
-
-	@Override
-	public String toString() {
-		return "InSufficientFundsException [fundsAmount=" + fundsAmount + "]";
 	}
 
 }

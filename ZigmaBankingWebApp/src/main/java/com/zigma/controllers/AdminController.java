@@ -31,9 +31,4 @@ public class AdminController {
 			else return "Sorry! admin not found";
 	}
 	
-
-	
-	
-	
-	
 }

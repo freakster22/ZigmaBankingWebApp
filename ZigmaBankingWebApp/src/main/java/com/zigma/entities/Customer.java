@@ -32,9 +32,8 @@ public class Customer {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long crn;
 
-	@OneToOne
+	@OneToOne(mappedBy = "customer")
 	@JsonIgnore
-	@JoinColumn(name = "userId")
 	private Login login;
 	@Column(nullable = false)
 	private String name;
@@ -44,8 +43,6 @@ public class Customer {
 	private String emailId;
 	@Column(nullable = false)
 	private String mobileNo;
-	@Column(nullable = false)
-	private String password;
 
 	private LocalDateTime logoutTime;
 	@OneToMany(mappedBy = "customer")
@@ -116,19 +113,10 @@ public class Customer {
 		this.login = login;
 	}
 
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
-
 	@Override
 	public String toString() {
 		return "Customer [crn=" + crn + ", login=" + login + ", name=" + name + ", address=" + address + ", emailId="
-				+ emailId + ", mobileNo=" + mobileNo + ", password=" + password + ", logoutTime=" + logoutTime
-				+ ", account=" + account + "]";
+				+ emailId + ", mobileNo=" + mobileNo + ", logoutTime=" + logoutTime + ", account=" + account + "]";
 	}
 
 }

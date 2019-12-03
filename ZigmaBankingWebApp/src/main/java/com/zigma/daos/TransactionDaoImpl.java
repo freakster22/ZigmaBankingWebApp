@@ -31,15 +31,15 @@ public class TransactionDaoImpl implements TransactionDao {
 	}
 
 	@Override
-	public List<Transaction> getById(long accountNo) {
+	public List<Transaction> getById(long crn) {
 		// TODO Auto-generated method stub
-		return (List<Transaction>) hibernateTemplate.find("from Transaction");
+		return (List<Transaction>) hibernateTemplate.find(TransactionDao.class,crn);
 	}
 
 	@Override
 	public List<Account> getBalanceByAccountNo(long accountNo) {
 		// TODO Auto-generated method stub
-		return (List<Account>) hibernateTemplate.find("from Account");
+		return (List<Account>) hibernateTemplate.find(TransactionDao.class, accountNo);
 	}
 
 
